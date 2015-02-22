@@ -8,7 +8,7 @@ if(isset ($_POST['propuesta'])){
 	$usuario=$_POST['usuario_id'];
 
 	try{
-	$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
+	$conn = new GanemosPDO();
 	$consulta = "SELECT propuesta_voto FROM prog_likes_propuesta 
 	WHERE usuario_id=".$usuario." and propuesta_id = ".$propuesta.";";
 	$result = $conn->prepare($consulta);

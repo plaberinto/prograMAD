@@ -356,7 +356,7 @@ $(document).ready(function() {
 					{{ propuesta.sum_likes}}
 				</div>
 				<div class="col-xs-11">
-					<div class="titulo"><a href="http://programa.ganemoszaragoza.com/propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
+					<div class="titulo"><a href="propuesta.php?id={{propuesta.id}}">{{ propuesta.titulo}}</a></div>
 					{% if propuesta.grupo > 0 %}
 					<div class="autor"><img src="static/images/grupo{{ propuesta.grupo}}.png" alt="Grupo {{ propuesta.apellidos}}" title="Grupo {{ propuesta.apellidos}}"> Propuesta del Grupo {{ propuesta.apellidos}}
 					{% else %}
@@ -387,7 +387,7 @@ $(document).ready(function() {
 		<div class="col-xs-1"></div>
 	</div>
 	<hr class="hr">
-		{% endif %}
+		
 	<form id="comentar">
 		<div class="row"><strong>¿Qué te ha parecido?</strong></div>
 		<div class="row">
@@ -398,7 +398,7 @@ $(document).ready(function() {
 		<div class="row"><a id="boton_enmienda" class="btn btn-success">Comentar</a></div>
 
 	</form>
-
+		{% endif %}
 	{% else %}
 	<div class="row">
 		<h5><strong>Identifícate</strong> </h5>

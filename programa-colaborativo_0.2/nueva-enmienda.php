@@ -8,8 +8,7 @@ if (isset($_POST["propuesta_id"])&& isset($_POST["usuario_id"])){
 
 		try{
 			//Inserto enmienda
-			$conn = new PDO('mysql:host=localhost;dbname=dbname', 'user', 'pass');
-			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			$conn = new GanemosPDO();
 			$consulta = array('propuesta_id'=>$propuesta_id,'usuario_id'=>$usuario_id,'enmienda'=>$enmienda);
 			$result=$conn->prepare( "INSERT INTO prog_enmiendas (autor_id, propuesta_id, enmienda, sum_likes) 
 				VALUES(:usuario_id, :propuesta_id, :enmienda , 1);");

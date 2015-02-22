@@ -5,7 +5,6 @@
 $root ="root";
 $passwd_admin ="root";
 
-
 //Configuración Twig - Motor de plantillas
 //Cargador de Twig
 //Realpath nos da la ruta absoluta de ese directorio.

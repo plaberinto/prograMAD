@@ -6,11 +6,11 @@ if(isset ($_GET['id'])){
 	
 	$id =$_GET['id'];
 	$buscaID=array('id'=>$id);
-	$propuesta = "SELECT  p.id, p.autor_id,p.titulo, p.propuesta, p.sum_likes,p.barrio, p.sector,
+	$propuesta = "SELECT  p.id, p.autor_id,p.titulo, p.propuesta, p.sum_likes, p.barrio, p.sector,
 	(p.positivos /(p.positivos+p.negativos)) porcentaje, p.comentarios,
-	u.nombre, u.apellidos, u.grupo, u.id as user_id
-		FROM prog_propuestas as p, users as u
-		WHERE p.id=:id and p.autor_id=u.id ";
+	u.nombre, u.apellidos, u.id as user_id
+		FROM prog_propuestas p INNER JOIN users u ON p.autor_id=u.id
+		WHERE p.id=:id";
 	
 	$enmiendas = 'SELECT u.nombre, u.apellidos, e.id, e.enmienda, e.sum_likes, e.autor_id, u.grupo
 		FROM prog_enmiendas AS e, users AS u
@@ -44,7 +44,7 @@ AND c.autor_id = u.id';
 			
 		}	
 }
-$datos = array('autor'=>$autor,'id'=>$buscaID,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmienda, $comentarios));
+$datos = array('autor'=>$autor,'id'=>$id,'user'=>autentificado(),'propuesta' => preparada($buscaID,$propuesta), 'enmiendas'=>listarpreparada($buscaID,$enmiendas), 'comentarios'=>listarpreparada($id_enmiendas, $comentarios));
 
 echo $template->render($datos);
 ?>
